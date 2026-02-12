@@ -1440,23 +1440,14 @@ function addFollowButton(map) {
 }
 
 // ---------------- INIT ----------------
-window.addEventListener('load', function() {
-  let m = null;
-  for (const key in window) {
-    if (window[key] && window[key] instanceof L.Map) {
-      m = window[key];
-      break;
-    }
-  }
-  if (m) {
-    window._liveMap = m;
-    addFollowButton(m);
-    startLiveTracking();
-    console.log("✅ Live tracking ready");
-  } else {
-    console.warn("⚠️ No Leaflet map found.");
-  }
-});
+window._liveMap = map_b3cb9ad9e081810cd4872bd9152db256;
+
+addFollowButton(window._liveMap);
+addUIToggleButton(window._liveMap);
+startLiveTracking();
+
+console.log("✅ Live tracking ready");
+
  // ---------------- UI TOGGLE BUTTON ----------------
 function addUIToggleButton(map) {
   const control = L.control({position: 'topleft'});
