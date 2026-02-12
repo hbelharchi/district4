@@ -1307,7 +1307,7 @@ map_efe58283a4ce798dbf706877ffd61f05.on('locationfound', function (e) {
 });
 
 map_efe58283a4ce798dbf706877ffd61f05.on('locationerror', function (e) {
-    alert("Erreur de localisation : " + e.message);
+    console.warn("Erreur de localisation :", e.message);
 });
 
 // Lancer automatiquement
