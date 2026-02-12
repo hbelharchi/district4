@@ -1277,135 +1277,41 @@
 }
             ).addTo(map_efe58283a4ce798dbf706877ffd61f05);
 
-  var geo_json_604f76e9a0c4a636bf871db17037c527searchControl = new L.Control.Search({
-                layer: geo_json_604f76e9a0c4a636bf871db17037c527,
-                
-                propertyName: 'Province',
-                
-                collapsed: true,
-                textPlaceholder: 'Rechercher une province…',
-                position:'topleft',
-            
-                marker: false,
-                moveToLocation: function(latlng, title, map) {
-                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
-                    map.flyTo(latlng, zoom); // access the zoom
-                }
-            
-                });
-                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:locationfound', function(e) {
-                    geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
-                        return feature.properties.style
-                    })
-                    
-                    if(e.layer._popup)
-                        e.layer.openPopup();
-                })
-                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:collapsed', function(e) {
-                        geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
-                            return feature.properties.style
-                    });
-                });
-            map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
+  // ===== GEOLOCALISATION EN TEMPS REEL =====
+var userMarker;
+var userCircle;
 
-        
-    
-            var geo_json_604f76e9a0c4a636bf871db17037c527searchControl = new L.Control.Search({
-                layer: geo_json_604f76e9a0c4a636bf871db17037c527,
-                
-                propertyName: 'Commune',
-                
-                collapsed: true,
-                textPlaceholder: 'Rechercher une commune…',
-                position:'topleft',
-            
-                marker: false,
-                moveToLocation: function(latlng, title, map) {
-                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
-                    map.flyTo(latlng, zoom); // access the zoom
-                }
-            
-                });
-                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:locationfound', function(e) {
-                    geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
-                        return feature.properties.style
-                    })
-                    
-                    if(e.layer._popup)
-                        e.layer.openPopup();
-                })
-                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:collapsed', function(e) {
-                        geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
-                            return feature.properties.style
-                    });
-                });
-            map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
+function startTracking() {
+    map_efe58283a4ce798dbf706877ffd61f05.locate({
+        setView: true,
+        watch: true,
+        enableHighAccuracy: true,
+        maxZoom: 18
+    });
+}
 
-        
-    
-            var geo_json_604f76e9a0c4a636bf871db17037c527searchControl = new L.Control.Search({
-                layer: geo_json_604f76e9a0c4a636bf871db17037c527,
-                
-                propertyName: 'Code_district',
-                
-                collapsed: true,
-                textPlaceholder: 'Rechercher par Code district…',
-                position:'topleft',
-            
-                marker: false,
-                moveToLocation: function(latlng, title, map) {
-                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
-                    map.flyTo(latlng, zoom); // access the zoom
-                }
-            
-                });
-                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:locationfound', function(e) {
-                    geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
-                        return feature.properties.style
-                    })
-                    
-                    if(e.layer._popup)
-                        e.layer.openPopup();
-                })
-                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:collapsed', function(e) {
-                        geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
-                            return feature.properties.style
-                    });
-                });
-            map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
+map_efe58283a4ce798dbf706877ffd61f05.on('locationfound', function (e) {
+    var lat = e.latlng.lat;
+    var lng = e.latlng.lng;
+    var accuracy = e.accuracy;
 
-   // ===== GEOLOCALISATION EN TEMPS REEL =====
-// === Marker pour localisation GPS en direct ===
-var liveDivIcon = L.divIcon({
-    html: '<div style="font-weight:bold; color:green; font-size:12pt;">📍</div>',
-    className: "empty"
+    if (userMarker) {
+        userMarker.setLatLng(e.latlng);
+        userCircle.setLatLng(e.latlng).setRadius(accuracy);
+    } else {
+        userMarker = L.marker(e.latlng).addTo(map_efe58283a4ce798dbf706877ffd61f05)
+;
+
+        userCircle = L.circle(e.latlng, { radius: accuracy }).addTo(map_efe58283a4ce798dbf706877ffd61f05);
+    }
 });
 
-// Position initiale (par défaut, tu peux changer)
-var liveMarker = L.marker([35.454, -6.034], { icon: liveDivIcon }).addTo(map);
+map_efe58283a4ce798dbf706877ffd61f05.on('locationerror', function (e) {
+    alert("Erreur de localisation : " + e.message);
+});
 
-// Fonction pour mettre à jour la position GPS
-function updateGPS(position) {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    liveMarker.setLatLng([lat, lng]);
-    // Décommenter la ligne suivante si tu veux recentrer la carte sur la position
-    // map.setView([lat, lng], 16);
-}
-
-// Activation de la géolocalisation en direct
-if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(updateGPS, function(err){
-        console.error("Erreur géolocalisation : ", err);
-    }, {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: 5000
-    });
-} else {
-    alert("La géolocalisation n'est pas supportée par ce navigateur.");
-}
-                                                             
-        
+// Lancer automatiquement
+startTracking();
+           
 </script>
 </html>
