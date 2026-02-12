@@ -1375,14 +1375,16 @@
             map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
 
    // ===== GEOLOCALISATION EN TEMPS REEL =====
+// ===== GEOLOCALISATION EN TEMPS REEL =====
 
 let _followUser = false;
 let _marker = null;
 let _accuracyCircle = null;
 
-function startLiveTracking() {
+function startLiveTracking(map) {
+
   if (!navigator.geolocation) {
-    alert('Geolocation is not supported by your browser');
+    alert('Geolocation not supported');
     return;
   }
 
@@ -1394,23 +1396,23 @@ function startLiveTracking() {
     const acc = position.coords.accuracy || 0;
 
     if (!_marker) {
-      _marker = L.marker([lat, lon]).addTo(window._liveMap);
-      _accuracyCircle = L.circle([lat, lon], {radius: acc, color:'#136AEC', fillColor:'#136AEC', fillOpacity:0.15}).addTo(window._liveMap);
+      _marker = L.marker([lat, lon]).addTo(map);
+      _accuracyCircle = L.circle([lat, lon], {radius: acc}).addTo(map);
     } else {
       _marker.setLatLng([lat, lon]);
       _accuracyCircle.setLatLng([lat, lon]).setRadius(acc);
     }
 
     if (firstLocate) {
-      window._liveMap.flyTo([lat, lon], 16, {animate: true, duration: 0.8});
+      map.flyTo([lat, lon], 16);
       firstLocate = false;
     } else if (_followUser) {
-      window._liveMap.panTo([lat, lon], {animate: true});
+      map.panTo([lat, lon]);
     }
   }
 
   function onError(err) {
-    console.warn('Geolocation error:', err);
+    console.warn("Geolocation error:", err);
   }
 
   navigator.geolocation.watchPosition(onSuccess, onError, {
@@ -1427,28 +1429,19 @@ function addFollowButton(map) {
     const c = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
     c.style.background = 'white';
     c.style.cursor = 'pointer';
-    c.innerHTML = '<a href="#" id="followBtn" style="display:block;padding:6px 8px;text-decoration:none;">🚶 Unfollow</a>';
+    c.innerHTML = '<a href="#" style="display:block;padding:6px 8px;">📍 Follow</a>';
+
     c.onclick = function() {
       _followUser = !_followUser;
-      const btn = document.getElementById('followBtn');
-      btn.textContent = _followUser ? "📍 Follow" : "🚶 Unfollow";
-      btn.style.background = _followUser ? "#c8f7c5" : "#f0f0f0";
+      c.querySelector('a').textContent = _followUser ? "🚶 Unfollow" : "📍 Follow";
     };
+
     return c;
   };
   control.addTo(map);
 }
 
-// ---------------- INIT ----------------
-window._liveMap = map_b3cb9ad9e081810cd4872bd9152db256;
-
-addFollowButton(window._liveMap);
-addUIToggleButton(window._liveMap);
-startLiveTracking();
-
-console.log("✅ Live tracking ready");
-
- // ---------------- UI TOGGLE BUTTON ----------------
+// ---------------- UI TOGGLE BUTTON ----------------
 function addUIToggleButton(map) {
   const control = L.control({position: 'topleft'});
   control.onAdd = function() {
@@ -1456,38 +1449,44 @@ function addUIToggleButton(map) {
     c.id = 'uiToggleBtn';
     c.style.background = 'white';
     c.style.cursor = 'pointer';
-    c.style.marginTop = '90px'; // place below other controls if any
-    c.style.transition = 'margin-top 0.3s ease';
-    c.innerHTML = '<a href="#" style="display:block;padding:6px 8px;text-decoration:none;">🧩 Hide All</a>';
+    c.style.marginTop = '90px';
+    c.innerHTML = '<a href="#" style="display:block;padding:6px 8px;">🧩 Hide All</a>';
 
     let hidden = false;
+
     c.onclick = function() {
       const controls = document.querySelectorAll('.leaflet-control');
       const link = c.querySelector('a');
 
-      if (!hidden) {
-        controls.forEach(ctrl => {
-          if (ctrl.id !== 'uiToggleBtn') ctrl.style.display = 'none';
-        });
-        c.style.marginTop = '0px';
-        link.textContent = '🧩 Show All';
-      } else {
-        controls.forEach(ctrl => {
-          if (ctrl.id !== 'uiToggleBtn') ctrl.style.display = 'block';
-        });
-        c.style.marginTop = '90px';
-        link.textContent = '🧩 Hide All';
-      }
+      controls.forEach(ctrl => {
+        if (ctrl.id !== 'uiToggleBtn') {
+          ctrl.style.display = hidden ? 'block' : 'none';
+        }
+      });
+
+      link.textContent = hidden ? '🧩 Hide All' : '🧩 Show All';
       hidden = !hidden;
     };
+
     return c;
   };
   control.addTo(map);
 }
 
-// Appel de la fonction sur ta carte
-addUIToggleButton(map_b3cb9ad9e081810cd4872bd9152db256);
-                                                                            
+// ---------------- INITIALISATION CORRECTE ----------------
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const map = map_b3cb9ad9e081810cd4872bd9152db256;
+
+  addFollowButton(map);
+  addUIToggleButton(map);
+  startLiveTracking(map);
+
+  console.log("✅ Live tracking ready");
+
+});
+                                                                         
         
 </script>
 </html>
