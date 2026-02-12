@@ -1375,32 +1375,37 @@
             map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
 
    // ===== GEOLOCALISATION EN TEMPS REEL =====
-// Vérifier que le navigateur supporte la géolocalisation
+// === Marker pour localisation GPS en direct ===
+var liveDivIcon = L.divIcon({
+    html: '<div style="font-weight:bold; color:green; font-size:12pt;">📍</div>',
+    className: "empty"
+});
+
+// Position initiale (par défaut, tu peux changer)
+var liveMarker = L.marker([35.454, -6.034], { icon: liveDivIcon }).addTo(map);
+
+// Fonction pour mettre à jour la position GPS
+function updateGPS(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    liveMarker.setLatLng([lat, lng]);
+    // Décommenter la ligne suivante si tu veux recentrer la carte sur la position
+    // map.setView([lat, lng], 16);
+}
+
+// Activation de la géolocalisation en direct
 if (navigator.geolocation) {
-    // Créer un divIcon pour la position en direct
-    var liveDivIcon = L.divIcon({
-        html: '<div style="font-weight:bold; color:green; font-size:12pt;">📍</div>',
-        className: "empty"
-    });
-
-    // Créer le marker initial à [0,0] (sera mis à jour)
-    var liveMarker = L.marker([0, 0], { icon: liveDivIcon }).addTo(map);
-
-    // Fonction pour mettre à jour la position
-    function updatePosition(position) {
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        liveMarker.setLatLng([lat, lng]);
-        map.setView([lat, lng], 16); // centre la carte sur la position
-    }
-
-    // Activer la mise à jour continue
-    navigator.geolocation.watchPosition(updatePosition, function(error) {
-        console.error("Erreur de géolocalisation : ", error);
+    navigator.geolocation.watchPosition(updateGPS, function(err){
+        console.error("Erreur géolocalisation : ", err);
     }, {
         enableHighAccuracy: true,
         maximumAge: 0,
-                                                                  
+        timeout: 5000
+    });
+} else {
+    alert("La géolocalisation n'est pas supportée par ce navigateur.");
+}
+                                                             
         
 </script>
 </html>
