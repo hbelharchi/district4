@@ -1282,11 +1282,13 @@ var userMarker;
 var userCircle;
 
 function startTracking() {
-    map_efe58283a4ce798dbf706877ffd61f05.locate({
+   map_efe58283a4ce798dbf706877ffd61f05.locate({
         setView: false,
         watch: true,
         enableHighAccuracy: true,
-        maxZoom: 18
+        maxZoom: 18,
+        timeout: 20000,       // 20 secondes au lieu de 10 par défaut
+        maximumAge: 1000       // garder une position récente max 1s
     });
 }
 
