@@ -1376,117 +1376,37 @@
 
    // ===== GEOLOCALISATION EN TEMPS REEL =====
 // ===== GEOLOCALISATION EN TEMPS REEL =====
+// Vérifier que le navigateur supporte la géolocalisation
+if (navigator.geolocation) {
+    // Créer un marqueur pour la position en direct
+    var userMarker = L.marker([0, 0], {
+        icon: L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/64/64113.png', // icône GPS
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
+        })
+    }).addTo(map);
 
-let _followUser = false;
-let _marker = null;
-let _accuracyCircle = null;
-
-function startLiveTracking(map) {
-
-  if (!navigator.geolocation) {
-    alert('Geolocation not supported');
-    return;
-  }
-
-  let firstLocate = true;
-
-  function onSuccess(position) {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    const acc = position.coords.accuracy || 0;
-
-    if (!_marker) {
-      _marker = L.marker([lat, lon]).addTo(map);
-      _accuracyCircle = L.circle([lat, lon], {radius: acc}).addTo(map);
-    } else {
-      _marker.setLatLng([lat, lon]);
-      _accuracyCircle.setLatLng([lat, lon]).setRadius(acc);
+    // Fonction pour mettre à jour la position
+    function updatePosition(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        userMarker.setLatLng([lat, lng]);
+        map.setView([lat, lng], 16); // centre la carte sur la position
     }
 
-    if (firstLocate) {
-      map.flyTo([lat, lon], 16);
-      firstLocate = false;
-    } else if (_followUser) {
-      map.panTo([lat, lon]);
-    }
-  }
-
-  function onError(err) {
-    console.warn("Geolocation error:", err);
-  }
-
-  navigator.geolocation.watchPosition(onSuccess, onError, {
-    enableHighAccuracy: true,
-    maximumAge: 1000,
-    timeout: 10000
-  });
+    // Activer la mise à jour continue
+    navigator.geolocation.watchPosition(updatePosition, function(error) {
+        console.error("Erreur de géolocalisation : ", error);
+    }, {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 5000
+    });
+} else {
+    alert("La géolocalisation n'est pas supportée par ce navigateur.");
 }
-
-// ---------------- FOLLOW BUTTON ----------------
-function addFollowButton(map) {
-  const control = L.control({position: 'topleft'});
-  control.onAdd = function() {
-    const c = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-    c.style.background = 'white';
-    c.style.cursor = 'pointer';
-    c.innerHTML = '<a href="#" style="display:block;padding:6px 8px;">📍 Follow</a>';
-
-    c.onclick = function() {
-      _followUser = !_followUser;
-      c.querySelector('a').textContent = _followUser ? "🚶 Unfollow" : "📍 Follow";
-    };
-
-    return c;
-  };
-  control.addTo(map);
-}
-
-// ---------------- UI TOGGLE BUTTON ----------------
-function addUIToggleButton(map) {
-  const control = L.control({position: 'topleft'});
-  control.onAdd = function() {
-    const c = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-    c.id = 'uiToggleBtn';
-    c.style.background = 'white';
-    c.style.cursor = 'pointer';
-    c.style.marginTop = '90px';
-    c.innerHTML = '<a href="#" style="display:block;padding:6px 8px;">🧩 Hide All</a>';
-
-    let hidden = false;
-
-    c.onclick = function() {
-      const controls = document.querySelectorAll('.leaflet-control');
-      const link = c.querySelector('a');
-
-      controls.forEach(ctrl => {
-        if (ctrl.id !== 'uiToggleBtn') {
-          ctrl.style.display = hidden ? 'block' : 'none';
-        }
-      });
-
-      link.textContent = hidden ? '🧩 Hide All' : '🧩 Show All';
-      hidden = !hidden;
-    };
-
-    return c;
-  };
-  control.addTo(map);
-}
-
-// ---------------- INITIALISATION CORRECTE ----------------
-
-document.addEventListener("DOMContentLoaded", function() {
-
-  const map = map_b3cb9ad9e081810cd4872bd9152db256;
-
-  addFollowButton(map);
-  addUIToggleButton(map);
-  startLiveTracking(map);
-
-  console.log("✅ Live tracking ready");
-
-});
-                                                                         
+                                                                    
         
 </script>
 </html>
