@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_efe58283a4ce798dbf706877ffd61f05 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_efe58283a4ce798dbf706877ffd61f05" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_efe58283a4ce798dbf706877ffd61f05 = L.map(
+                "map_efe58283a4ce798dbf706877ffd61f05",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 1,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_efe58283a4ce798dbf706877ffd61f05);
+
+            
+
+        
+    
+            var tile_layer_13f765a237802944ff7645aee1ed6b52 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_13f765a237802944ff7645aee1ed6b52.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            var tile_layer_54db47bc01874aa3e5e85bf4722adbad = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_54db47bc01874aa3e5e85bf4722adbad.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            var tile_layer_0194a1c247f6abd58872597ca9c05d6d = L.tileLayer(
+                "https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0194a1c247f6abd58872597ca9c05d6d.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            var tile_layer_4e4407e0704ab173bd762359e9afa383 = L.tileLayer(
+                "http://mt1.google.com/vt/lyrs=m\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4e4407e0704ab173bd762359e9afa383.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            var tile_layer_5f2d2b138c0cf4a9e1ee15eb3cd5aaf3 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s,h\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5f2d2b138c0cf4a9e1ee15eb3cd5aaf3.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            var feature_group_d45997f9381b35adb47f813b4bb9b2c6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_349539055bb5208319da1d8ad56e5cba_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "red", "fill": false, "opacity": 1, "weight": 2};
+            }
+        }
+
+        function geo_json_349539055bb5208319da1d8ad56e5cba_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_349539055bb5208319da1d8ad56e5cba = L.geoJson(null, {
+                onEachFeature: geo_json_349539055bb5208319da1d8ad56e5cba_onEachFeature,
+            
+                style: geo_json_349539055bb5208319da1d8ad56e5cba_styler,
+            ...{
+}
+        });
+
+        function geo_json_349539055bb5208319da1d8ad56e5cba_add (data) {
+            geo_json_349539055bb5208319da1d8ad56e5cba
+                .addData(data);
+        }
+            geo_json_349539055bb5208319da1d8ad56e5cba_add({"features": [{"geometry": {"coordinates": [[[-6.035460514428222, 35.45390030804585], [-6.0354248696571915, 35.45409224142833], [-6.035471627387688, 35.45419130441665], [-6.0355370014468175, 35.45425019741102], [-6.035540208031918, 35.454253088780824], [-6.035823499122141, 35.454508305979225], [-6.035877983765708, 35.454623813423595], [-6.035881838889631, 35.454632427594426], [-6.036161898290184, 35.45525821280069], [-6.036169743189806, 35.455272392966755], [-6.035588420690527, 35.45541910263034], [-6.034988636329092, 35.45562184663983], [-6.034308599130563, 35.45565141347455], [-6.034008706949845, 35.45660599985261], [-6.033548309094941, 35.45759860073245], [-6.033313232686013, 35.458217745640475], [-6.032188729999649, 35.45792617667848], [-6.032158271878778, 35.457985393866466], [-6.032158271878778, 35.457910570437214], [-6.0324877308942115, 35.457124937400394], [-6.032914489298657, 35.45607445517406], [-6.032918869665231, 35.456063672733265], [-6.03292201409273, 35.456055827519656], [-6.032926567145959, 35.4560447250884], [-6.032926971541538, 35.456043314406145], [-6.033102298673008, 35.45543170813358], [-6.0331170820903655, 35.455329280170446], [-6.033190816516634, 35.455344210409514], [-6.033576215160828, 35.45416348910865], [-6.032949956988958, 35.454022982467535], [-6.032855270408842, 35.454180793434396], [-6.032745450737029, 35.45416389810027], [-6.031759027416411, 35.453990095403874], [-6.031745523632512, 35.453987716106866], [-6.031747198432557, 35.45398601513807], [-6.031775438008651, 35.4539573343186], [-6.032513128921998, 35.4531405780407], [-6.032516792051156, 35.453146213624024], [-6.03382706517645, 35.45195428774876], [-6.0342417836591435, 35.452060612766154], [-6.034239961835792, 35.452068554931905], [-6.036181549700668, 35.45260630273573], [-6.0358972019854225, 35.45325535730314], [-6.035885638805262, 35.453271851839546], [-6.035466079860327, 35.453870340334525], [-6.035460514428222, 35.45390030804585]]], "type": "Polygon"}, "id": "0", "properties": {"Centre": null, "Code_centre": 1, "Code_district": 4, "Commune": "Assilah", "Latitude_centre": 35.45359, "Longitude_centre": -6.03425, "Nombre_total_menages": 194, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "Type": "Commune urbaine", "id": "12495"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_349539055bb5208319da1d8ad56e5cba.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["Code_district", "Region", "Province", "Commune", "Nombre_total_menages"];
+    let aliases = ["Code district", "R\u00e9gion", "Province", "Commune", "M\u00e9nages totaux"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+    geo_json_349539055bb5208319da1d8ad56e5cba.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["Code_district", "Region", "Province", "Commune", "Nombre_total_menages", "Team"];
+    let aliases = ["Code district", "R\u00e9gion", "Province", "Commune", "M\u00e9nages totaux", "\u00c9quipe"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "maxWidth": 350,
+  "className": "foliumpopup",
+});
+                     
+    
+            geo_json_349539055bb5208319da1d8ad56e5cba.addTo(feature_group_d45997f9381b35adb47f813b4bb9b2c6);
+        
+    
+            feature_group_d45997f9381b35adb47f813b4bb9b2c6.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            map_efe58283a4ce798dbf706877ffd61f05.fitBounds(
+                [[35.45195428774876, -6.036181549700668], [35.458217745640475, -6.031745523632512]],
+                {}
+            );
+        
+    
+        function geo_json_064f0bff59f077956d9fd6138ccd687b_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "green", "fillColor": "#90ee90", "fillOpacity": 0.3, "weight": 1.5};
+            }
+        }
+
+        function geo_json_064f0bff59f077956d9fd6138ccd687b_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_064f0bff59f077956d9fd6138ccd687b = L.geoJson(null, {
+                onEachFeature: geo_json_064f0bff59f077956d9fd6138ccd687b_onEachFeature,
+            
+                style: geo_json_064f0bff59f077956d9fd6138ccd687b_styler,
+            ...{
+}
+        });
+
+        function geo_json_064f0bff59f077956d9fd6138ccd687b_add (data) {
+            geo_json_064f0bff59f077956d9fd6138ccd687b
+                .addData(data);
+        }
+            geo_json_064f0bff59f077956d9fd6138ccd687b_add({"bbox": [-6.036121, 35.452119, -6.031953, 35.458196], "features": [{"bbox": [-6.035031, 35.454383, -6.034448, 35.455305], "geometry": {"coordinates": [[[-6.034448, 35.455226], [-6.034754, 35.454383], [-6.034975, 35.454445], [-6.035031, 35.454458], [-6.034731, 35.455305], [-6.034448, 35.455226]]], "type": "Polygon"}, "id": "0", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 8, "Commune": "Assilah", "Nombre_Men": 14, "Nombre_de_menage": 14, "Num_ilot": 8, "Numero_ilot": 8, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 109759.0, "id": "124951008", "id_district": 12495, "pid": "124951", "seq": 255420.0, "seqc": 179643.0}, "type": "Feature"}, {"bbox": [-6.035375, 35.454458, -6.03464, 35.455617], "geometry": {"coordinates": [[[-6.034768, 35.45561], [-6.03464, 35.455617], [-6.035055, 35.454458], [-6.035375, 35.454549], [-6.035012, 35.455561], [-6.034768, 35.45561]]], "type": "Polygon"}, "id": "1", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 9, "Commune": "Assilah", "Nombre_Men": 17, "Nombre_de_menage": 17, "Num_ilot": 9, "Numero_ilot": 9, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 109969.0, "id": "124951009", "id_district": 12495, "pid": "124951", "seq": 255421.0, "seqc": 179510.0}, "type": "Feature"}, {"bbox": [-6.033189, 35.457493, -6.03266, 35.458108], "geometry": {"coordinates": [[[-6.032986, 35.458108], [-6.03266, 35.458025], [-6.032891, 35.457493], [-6.033189, 35.45758], [-6.032986, 35.458108]]], "type": "Polygon"}, "id": "2", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 1, "Commune": "Assilah", "Nombre_Men": 10, "Nombre_de_menage": 10, "Num_ilot": 1, "Numero_ilot": 1, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110010.0, "id": "124951001", "id_district": 12495, "pid": "124951", "seq": 255413.0, "seqc": 179508.0}, "type": "Feature"}, {"bbox": [-6.0335, 35.457598, -6.033027, 35.458196], "geometry": {"coordinates": [[[-6.033271, 35.458196], [-6.033027, 35.458135], [-6.033246, 35.457598], [-6.0335, 35.457644], [-6.033388, 35.457908], [-6.033271, 35.458196]]], "type": "Polygon"}, "id": "3", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 2, "Commune": "Assilah", "Nombre_Men": 9, "Nombre_de_menage": 9, "Num_ilot": 2, "Numero_ilot": 2, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110011.0, "id": "124951002", "id_district": 12495, "pid": "124951", "seq": 255414.0, "seqc": 179470.0}, "type": "Feature"}, {"bbox": [-6.033768, 35.456798, -6.033262, 35.457608], "geometry": {"coordinates": [[[-6.033514, 35.457608], [-6.033262, 35.457563], [-6.033548, 35.456838], [-6.033606, 35.456798], [-6.033768, 35.457028], [-6.033514, 35.457608]]], "type": "Polygon"}, "id": "4", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 3, "Commune": "Assilah", "Nombre_Men": 3, "Nombre_de_menage": 3, "Num_ilot": 3, "Numero_ilot": 3, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110012.0, "id": "124951003", "id_district": 12495, "pid": "124951", "seq": 255415.0, "seqc": 179507.0}, "type": "Feature"}, {"bbox": [-6.033916, 35.456078, -6.033389, 35.456981], "geometry": {"coordinates": [[[-6.033502, 35.456078], [-6.033532, 35.456112], [-6.03358, 35.456171], [-6.033916, 35.456645], [-6.033806, 35.456981], [-6.033389, 35.45638], [-6.033467, 35.456167], [-6.033489, 35.456105], [-6.033502, 35.456078]]], "type": "Polygon"}, "id": "5", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 4, "Commune": "Assilah", "Nombre_Men": 11, "Nombre_de_menage": 11, "Num_ilot": 4, "Numero_ilot": 4, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110013.0, "id": "124951004", "id_district": 12495, "pid": "124951", "seq": 255416.0, "seqc": 179590.0}, "type": "Feature"}, {"bbox": [-6.034288, 35.455513, -6.033738, 35.456564], "geometry": {"coordinates": [[[-6.034288, 35.455589], [-6.033946, 35.456564], [-6.033738, 35.456344], [-6.033984, 35.455513], [-6.034288, 35.455589]]], "type": "Polygon"}, "id": "6", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 5, "Commune": "Assilah", "Nombre_Men": 4, "Nombre_de_menage": 4, "Num_ilot": 5, "Numero_ilot": 5, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110014.0, "id": "124951005", "id_district": 12495, "pid": "124951", "seq": 255417.0, "seqc": 179533.0}, "type": "Feature"}, {"bbox": [-6.034706, 35.455148, -6.033719, 35.455613], "geometry": {"coordinates": [[[-6.03382, 35.455148], [-6.034706, 35.455333], [-6.034607, 35.455613], [-6.033719, 35.455424], [-6.03382, 35.455148]]], "type": "Polygon"}, "id": "7", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 6, "Commune": "Assilah", "Nombre_Men": 6, "Nombre_de_menage": 6, "Num_ilot": 6, "Numero_ilot": 6, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110015.0, "id": "124951006", "id_district": 12495, "pid": "124951", "seq": 255418.0, "seqc": 179624.0}, "type": "Feature"}, {"bbox": [-6.034714, 35.45431, -6.034117, 35.455219], "geometry": {"coordinates": [[[-6.034416, 35.455219], [-6.034117, 35.455174], [-6.034424, 35.45431], [-6.034714, 35.454373], [-6.034416, 35.455219]]], "type": "Polygon"}, "id": "8", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 7, "Commune": "Assilah", "Nombre_Men": 9, "Nombre_de_menage": 9, "Num_ilot": 7, "Numero_ilot": 7, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110016.0, "id": "124951007", "id_district": 12495, "pid": "124951", "seq": 255419.0, "seqc": 179671.0}, "type": "Feature"}, {"bbox": [-6.035494, 35.455028, -6.035104, 35.455548], "geometry": {"coordinates": [[[-6.035466, 35.455409], [-6.035423, 35.455434], [-6.035104, 35.455548], [-6.035276, 35.455028], [-6.035347, 35.45503], [-6.035494, 35.455392], [-6.035466, 35.455409]]], "type": "Polygon"}, "id": "9", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 10, "Commune": "Assilah", "Nombre_Men": 3, "Nombre_de_menage": 3, "Num_ilot": 10, "Numero_ilot": 10, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110017.0, "id": "124951010", "id_district": 12495, "pid": "124951", "seq": 255422.0, "seqc": 179512.0}, "type": "Feature"}, {"bbox": [-6.035809, 35.454628, -6.035308, 35.455404], "geometry": {"coordinates": [[[-6.035576, 35.454731], [-6.035593, 35.454766], [-6.035809, 35.455313], [-6.035532, 35.455404], [-6.03553, 35.455397], [-6.035526, 35.455386], [-6.035308, 35.45489], [-6.035425, 35.454628], [-6.035562, 35.454703], [-6.035576, 35.454731]]], "type": "Polygon"}, "id": "10", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 11, "Commune": "Assilah", "Nombre_Men": 9, "Nombre_de_menage": 9, "Num_ilot": 11, "Numero_ilot": 11, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110018.0, "id": "124951011", "id_district": 12495, "pid": "124951", "seq": 255423.0, "seqc": 179545.0}, "type": "Feature"}, {"bbox": [-6.036121, 35.454293, -6.035455, 35.455314], "geometry": {"coordinates": [[[-6.035539, 35.454293], [-6.035617, 35.45433], [-6.035724, 35.454432], [-6.035823, 35.454532], [-6.036121, 35.455226], [-6.03585, 35.455314], [-6.035648, 35.454764], [-6.035575, 35.454645], [-6.035455, 35.454558], [-6.035539, 35.454293]]], "type": "Polygon"}, "id": "11", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 12, "Commune": "Assilah", "Nombre_Men": 18, "Nombre_de_menage": 18, "Num_ilot": 12, "Numero_ilot": 12, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110019.0, "id": "124951012", "id_district": 12495, "pid": "124951", "seq": 255424.0, "seqc": 179537.0}, "type": "Feature"}, {"bbox": [-6.035465, 35.453906, -6.034146, 35.454504], "geometry": {"coordinates": [[[-6.034215, 35.453906], [-6.035465, 35.454232], [-6.035377, 35.454504], [-6.034146, 35.45419], [-6.034215, 35.453906]]], "type": "Polygon"}, "id": "12", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 13, "Commune": "Assilah", "Nombre_Men": 12, "Nombre_de_menage": 12, "Num_ilot": 13, "Numero_ilot": 13, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110020.0, "id": "124951013", "id_district": 12495, "pid": "124951", "seq": 255425.0, "seqc": 179727.0}, "type": "Feature"}, {"bbox": [-6.035699, 35.45223, -6.033776, 35.453798], "geometry": {"coordinates": [[[-6.034823, 35.452388], [-6.035699, 35.452669], [-6.035421, 35.453425], [-6.034551, 35.453231], [-6.034318, 35.45379], [-6.034016, 35.453734], [-6.033994, 35.453798], [-6.033776, 35.453746], [-6.034262, 35.45223], [-6.034823, 35.452388]]], "type": "Polygon"}, "id": "13", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 14, "Commune": "Assilah", "Nombre_Men": 3, "Nombre_de_menage": 3, "Num_ilot": 14, "Numero_ilot": 14, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110021.0, "id": "124951014", "id_district": 12495, "pid": "124951", "seq": 255426.0, "seqc": 179808.0}, "type": "Feature"}, {"bbox": [-6.034048, 35.452119, -6.032847, 35.453035], "geometry": {"coordinates": [[[-6.033753, 35.453035], [-6.033324, 35.452988], [-6.032847, 35.452995], [-6.033765, 35.452169], [-6.033889, 35.452119], [-6.034048, 35.452151], [-6.033753, 35.453035]]], "type": "Polygon"}, "id": "14", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 15, "Commune": "Assilah", "Nombre_Men": 0, "Nombre_de_menage": 0, "Num_ilot": 15, "Numero_ilot": 15, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110022.0, "id": "124951015", "id_district": 12495, "pid": "124951", "seq": 255427.0, "seqc": 179838.0}, "type": "Feature"}, {"bbox": [-6.033196, 35.453008, -6.032639, 35.453355], "geometry": {"coordinates": [[[-6.033196, 35.453008], [-6.033077, 35.453355], [-6.032639, 35.453264], [-6.032842, 35.453029], [-6.033196, 35.453008]]], "type": "Polygon"}, "id": "15", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 16, "Commune": "Assilah", "Nombre_Men": 4, "Nombre_de_menage": 4, "Num_ilot": 16, "Numero_ilot": 16, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110023.0, "id": "124951016", "id_district": 12495, "pid": "124951", "seq": 255428.0, "seqc": 179836.0}, "type": "Feature"}, {"bbox": [-6.033545, 35.453013, -6.033011, 35.45403], "geometry": {"coordinates": [[[-6.033011, 35.453992], [-6.033312, 35.453013], [-6.033545, 35.45306], [-6.033232, 35.45403], [-6.033011, 35.453992]]], "type": "Polygon"}, "id": "16", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 17, "Commune": "Assilah", "Nombre_Men": 1, "Nombre_de_menage": 1, "Num_ilot": 17, "Numero_ilot": 17, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110024.0, "id": "124951017", "id_district": 12495, "pid": "124951", "seq": 255429.0, "seqc": 179820.0}, "type": "Feature"}, {"bbox": [-6.03304, 35.453322, -6.032312, 35.453731], "geometry": {"coordinates": [[[-6.032933, 35.453731], [-6.032312, 35.453595], [-6.03256, 35.453322], [-6.03304, 35.453437], [-6.032933, 35.453731]]], "type": "Polygon"}, "id": "17", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 18, "Commune": "Assilah", "Nombre_Men": 5, "Nombre_de_menage": 5, "Num_ilot": 18, "Numero_ilot": 18, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110025.0, "id": "124951018", "id_district": 12495, "pid": "124951", "seq": 255430.0, "seqc": 179833.0}, "type": "Feature"}, {"bbox": [-6.032911, 35.453661, -6.031953, 35.454114], "geometry": {"coordinates": [[[-6.031953, 35.453942], [-6.032239, 35.453661], [-6.032911, 35.453822], [-6.032819, 35.454114], [-6.031953, 35.453942]]], "type": "Polygon"}, "id": "18", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 19, "Commune": "Assilah", "Nombre_Men": 6, "Nombre_de_menage": 6, "Num_ilot": 19, "Numero_ilot": 19, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110026.0, "id": "124951019", "id_district": 12495, "pid": "124951", "seq": 255431.0, "seqc": 179832.0}, "type": "Feature"}, {"bbox": [-6.034388, 35.45424, -6.033828, 35.455165], "geometry": {"coordinates": [[[-6.034388, 35.454301], [-6.034095, 35.455165], [-6.033828, 35.455104], [-6.03412, 35.45424], [-6.034388, 35.454301]]], "type": "Polygon"}, "id": "19", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 20, "Commune": "Assilah", "Nombre_Men": 6, "Nombre_de_menage": 6, "Num_ilot": 20, "Numero_ilot": 20, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110027.0, "id": "124951020", "id_district": 12495, "pid": "124951", "seq": 255432.0, "seqc": 179705.0}, "type": "Feature"}, {"bbox": [-6.033957, 35.45546, -6.033526, 35.456292], "geometry": {"coordinates": [[[-6.033526, 35.456052], [-6.033691, 35.45546], [-6.033957, 35.455508], [-6.033708, 35.456292], [-6.033526, 35.456052]]], "type": "Polygon"}, "id": "20", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 21, "Commune": "Assilah", "Nombre_Men": 9, "Nombre_de_menage": 9, "Num_ilot": 21, "Numero_ilot": 21, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110028.0, "id": "124951021", "id_district": 12495, "pid": "124951", "seq": 255433.0, "seqc": 179642.0}, "type": "Feature"}, {"bbox": [-6.033642, 35.455404, -6.0323, 35.458019], "geometry": {"coordinates": [[[-6.033261, 35.455404], [-6.033642, 35.45548], [-6.033244, 35.456537], [-6.032983, 35.457155], [-6.032621, 35.458019], [-6.032391, 35.457954], [-6.0323, 35.457933], [-6.033261, 35.455404]]], "type": "Polygon"}, "id": "21", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 22, "Commune": "Assilah", "Nombre_Men": 28, "Nombre_de_menage": 28, "Num_ilot": 22, "Numero_ilot": 22, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110029.0, "id": "124951022", "id_district": 12495, "pid": "124951", "seq": 255434.0, "seqc": 179679.0}, "type": "Feature"}, {"bbox": [-6.033545, 35.456445, -6.032911, 35.457536], "geometry": {"coordinates": [[[-6.033206, 35.457536], [-6.032988, 35.457476], [-6.032911, 35.457458], [-6.033349, 35.456445], [-6.033545, 35.45673], [-6.033206, 35.457536]]], "type": "Polygon"}, "id": "22", "properties": {"CND": 12495, "CODECOM": 1, "CODEPR": 511, "CODREG": 1, "Code_district": 4, "Code_ilot": 23, "Commune": "Assilah", "Nombre_Men": 7, "Nombre_de_menage": 7, "Num_ilot": 23, "Numero_ilot": 23, "Pilote": 0, "Province": "Tanger-Assilah", "Region": "Tanger-T\u00e9touan-Al Hoceima", "Team": 6, "fid_1": 110030.0, "id": "124951023", "id_district": 12495, "pid": "124951", "seq": 255435.0, "seqc": 179569.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_064f0bff59f077956d9fd6138ccd687b.addTo(map_efe58283a4ce798dbf706877ffd61f05);
+        
+    
+            var feature_group_ea27d7d7a14331414881eec42fb25edc = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_b9409e0af27e5ececacee8e99826108e = L.marker(
+                [35.45485519800949, -6.034740241703466],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_1cca718088e870a0b3ae3e2beeffe9d9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e8\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b9409e0af27e5ececacee8e99826108e.setIcon(div_icon_1cca718088e870a0b3ae3e2beeffe9d9);
+            
+    
+            var marker_a4f9cf4285e66b1fd27650c8b3f2c3ef = L.marker(
+                [35.45505914170885, -6.035015412982038],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_8c0a4877b22ff609fae0d98462b20ab4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a4f9cf4285e66b1fd27650c8b3f2c3ef.setIcon(div_icon_8c0a4877b22ff609fae0d98462b20ab4);
+            
+    
+            var marker_65ba1f3af9501ebd5a16eaa5eae0d6dd = L.marker(
+                [35.457814717531264, -6.0329296121931755],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_ce29553c706f9e2311a41105160067eb = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e1\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_65ba1f3af9501ebd5a16eaa5eae0d6dd.setIcon(div_icon_ce29553c706f9e2311a41105160067eb);
+            
+    
+            var marker_8c8b7a4a499c30894bbdb65e752adb7c = L.marker(
+                [35.45790262955827, -6.033261284547643],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_4daa88bf42b53504d4a0107a808910c4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e2\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_8c8b7a4a499c30894bbdb65e752adb7c.setIcon(div_icon_4daa88bf42b53504d4a0107a808910c4);
+            
+    
+            var marker_f797087d8ffa3b7aa3207d00ccecf4a5 = L.marker(
+                [35.45724346389777, -6.033527243893504],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_bc99d2076d390d4cd9b3493c58440288 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f797087d8ffa3b7aa3207d00ccecf4a5.setIcon(div_icon_bc99d2076d390d4cd9b3493c58440288);
+            
+    
+            var marker_5f0d7fd3003645a3d4de30fdd409ee3b = L.marker(
+                [35.45653069912186, -6.033654960479347],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_aae04b8475d050d173f8b38e8d0a64d7 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e4\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_5f0d7fd3003645a3d4de30fdd409ee3b.setIcon(div_icon_aae04b8475d050d173f8b38e8d0a64d7);
+            
+    
+            var marker_a4d302505d2b7e70c2a0becce9bd6a23 = L.marker(
+                [35.45600264271153, -6.033996922528033],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_fd847a7fe602df11096fa9e0ecd03b50 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e5\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a4d302505d2b7e70c2a0becce9bd6a23.setIcon(div_icon_fd847a7fe602df11096fa9e0ecd03b50);
+            
+    
+            var marker_3f8636f0a43228aecb1cd0d26c6620dc = L.marker(
+                [35.455389769930704, -6.034213854341478],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_ec296bea89d00c10ced9200f0c7013f9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_3f8636f0a43228aecb1cd0d26c6620dc.setIcon(div_icon_ec296bea89d00c10ced9200f0c7013f9);
+            
+    
+            var marker_c984263c55572cf3170e2c1063af39f4 = L.marker(
+                [35.454779500763614, -6.0344170087941595],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_00bbc683db86484efe1a76a1b48a2ea2 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e7\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_c984263c55572cf3170e2c1063af39f4.setIcon(div_icon_00bbc683db86484efe1a76a1b48a2ea2);
+            
+    
+            var marker_b16dd0edaa5b19e5b91daaf9f5d744d5 = L.marker(
+                [35.45531492911198, -6.035302572230472],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_0ad967299a6868bba561ba284259a53e = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e10\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b16dd0edaa5b19e5b91daaf9f5d744d5.setIcon(div_icon_0ad967299a6868bba561ba284259a53e);
+            
+    
+            var marker_a2ac656bb199fe188a315a984396a1ca = L.marker(
+                [35.45504544485756, -6.035542809520913],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_550a6f55a4d9f0ee77ee11e0bcfe70de = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e11\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a2ac656bb199fe188a315a984396a1ca.setIcon(div_icon_550a6f55a4d9f0ee77ee11e0bcfe70de);
+            
+    
+            var marker_5d5e3d1cfb4244687cb547c13894c4ea = L.marker(
+                [35.4548259780525, -6.035788393578116],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_57394058e58981bed57add5dd8d832ba = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e12\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_5d5e3d1cfb4244687cb547c13894c4ea.setIcon(div_icon_57394058e58981bed57add5dd8d832ba);
+            
+    
+            var marker_59eefde311116256fa9ca2f896b16c43 = L.marker(
+                [35.45421697557429, -6.034798399583043],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_55e44a01108e72345a8affff6e268eb9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e13\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_59eefde311116256fa9ca2f896b16c43.setIcon(div_icon_55e44a01108e72345a8affff6e268eb9);
+            
+    
+            var marker_1b4db71863f071c1f03367763d1915e5 = L.marker(
+                [35.452989441057625, -6.034681465697757],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_09385f300b9a2f628110b6d4420efa1f = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e14\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_1b4db71863f071c1f03367763d1915e5.setIcon(div_icon_09385f300b9a2f628110b6d4420efa1f);
+            
+    
+            var marker_17e5a034b492a9a31252db080aa4fe04 = L.marker(
+                [35.45266151911487, -6.033560343691769],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_f96b7d6b557aaf94fbfd0774757dcf49 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e15\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_17e5a034b492a9a31252db080aa4fe04.setIcon(div_icon_f96b7d6b557aaf94fbfd0774757dcf49);
+            
+    
+            var marker_d06dd6f00f9134ce0f82e2cabeb06bc5 = L.marker(
+                [35.45318352112583, -6.03294509140461],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_b3c29f58afebbdcf60cfd8521fbfe20a = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e16\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d06dd6f00f9134ce0f82e2cabeb06bc5.setIcon(div_icon_b3c29f58afebbdcf60cfd8521fbfe20a);
+            
+    
+            var marker_b8cbaf968e7743620ed0310728eb8fbb = L.marker(
+                [35.453528715152885, -6.033276455051886],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_5dac60953618f4849032a675d643c57b = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e17\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b8cbaf968e7743620ed0310728eb8fbb.setIcon(div_icon_5dac60953618f4849032a675d643c57b);
+            
+    
+            var marker_4a6d7d59d118fecc145c29d1e8382425 = L.marker(
+                [35.45353667928094, -6.032706047363788],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_d9e8dbbdda0f518f7ac338535a4891d9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e18\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_4a6d7d59d118fecc145c29d1e8382425.setIcon(div_icon_d9e8dbbdda0f518f7ac338535a4891d9);
+            
+    
+            var marker_cc5185b1a68e33b69cf08773e3e307af = L.marker(
+                [35.45389890360901, -6.032470825077014],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_0cc51dc3cc022872af7472fea839834e = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e19\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_cc5185b1a68e33b69cf08773e3e307af.setIcon(div_icon_0cc51dc3cc022872af7472fea839834e);
+            
+    
+            var marker_7f78cbea27ed653b4345dedf626a483d = L.marker(
+                [35.454712251376556, -6.034107840052887],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_8933dc8e4981faad1f7498445940bdb6 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e20\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7f78cbea27ed653b4345dedf626a483d.setIcon(div_icon_8933dc8e4981faad1f7498445940bdb6);
+            
+    
+            var marker_b13de915ed06d4214d1e45544d8f6a56 = L.marker(
+                [35.45583596920401, -6.0337277854284475],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_81e426e186c9bb0fdc8ace4a370ca999 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e21\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b13de915ed06d4214d1e45544d8f6a56.setIcon(div_icon_81e426e186c9bb0fdc8ace4a370ca999);
+            
+    
+            var marker_2f35226c329c7307694657f1af980f11 = L.marker(
+                [35.456686929981636, -6.03297553271358],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_2d67485013df474057c64d5db671466a = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e22\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_2f35226c329c7307694657f1af980f11.setIcon(div_icon_2d67485013df474057c64d5db671466a);
+            
+    
+            var marker_dcf38c2f82c481dedc8ef723caf0f88d = L.marker(
+                [35.45705065847325, -6.033247151134617],
+                {
+}
+            ).addTo(feature_group_ea27d7d7a14331414881eec42fb25edc);
+        
+    
+            var div_icon_2407f22c32545f6452f4a1e0277fb051 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:red; font-size:10pt;\"\u003e23\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_dcf38c2f82c481dedc8ef723caf0f88d.setIcon(div_icon_2407f22c32545f6452f4a1e0277fb051);
+            
+    
+            var feature_group_06c81ffaf2f8ebbd4e778408f60c0916 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5235a3006eb42bcc3ff98eafd6ef1733 = L.marker(
+                [35.45482719800949, -6.034740241703466],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_b7d4f079027eb3c60bfeb28afca3f28a = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e14\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_5235a3006eb42bcc3ff98eafd6ef1733.setIcon(div_icon_b7d4f079027eb3c60bfeb28afca3f28a);
+            
+    
+            var marker_7e93b8b240c042a3d496f1c743b48bbd = L.marker(
+                [35.45503114170885, -6.035015412982038],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_cbc9ab6234335ecb8594758a4605477e = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e17\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7e93b8b240c042a3d496f1c743b48bbd.setIcon(div_icon_cbc9ab6234335ecb8594758a4605477e);
+            
+    
+            var marker_71759f9bd0389c84c962afb4a4556d29 = L.marker(
+                [35.45778671753126, -6.0329296121931755],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_608ba0cb6aac9d99d65f5a17691f6ea1 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e10\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_71759f9bd0389c84c962afb4a4556d29.setIcon(div_icon_608ba0cb6aac9d99d65f5a17691f6ea1);
+            
+    
+            var marker_ff414c1e8a441310afaf4e4a5f8f9a1e = L.marker(
+                [35.45787462955827, -6.033261284547643],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_fa11791f618400a4b79627712e771ac6 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_ff414c1e8a441310afaf4e4a5f8f9a1e.setIcon(div_icon_fa11791f618400a4b79627712e771ac6);
+            
+    
+            var marker_1ca12597afdd1ba3d038a235091f205f = L.marker(
+                [35.45721546389777, -6.033527243893504],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_0cd96c8b7554772ae097b25c7d345f41 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_1ca12597afdd1ba3d038a235091f205f.setIcon(div_icon_0cd96c8b7554772ae097b25c7d345f41);
+            
+    
+            var marker_9a8244810142f0ea03f4579df9b2207f = L.marker(
+                [35.45650269912186, -6.033654960479347],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_43aeea4906fcacf7b226987d34694d14 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e11\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_9a8244810142f0ea03f4579df9b2207f.setIcon(div_icon_43aeea4906fcacf7b226987d34694d14);
+            
+    
+            var marker_80450a7e052e4037b962461e432edad2 = L.marker(
+                [35.45597464271153, -6.033996922528033],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_7c50940c353680e77c2864654386ded5 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e4\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_80450a7e052e4037b962461e432edad2.setIcon(div_icon_7c50940c353680e77c2864654386ded5);
+            
+    
+            var marker_115a26c10e445c43b98898b695844551 = L.marker(
+                [35.455361769930704, -6.034213854341478],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_8edc32ce4121853b516b8242bd095d76 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_115a26c10e445c43b98898b695844551.setIcon(div_icon_8edc32ce4121853b516b8242bd095d76);
+            
+    
+            var marker_b6d52bc239a9d370a12cc4c4550bdf6e = L.marker(
+                [35.454751500763614, -6.0344170087941595],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_b734f5215aa20acd9868b31bc61c21cf = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_b6d52bc239a9d370a12cc4c4550bdf6e.setIcon(div_icon_b734f5215aa20acd9868b31bc61c21cf);
+            
+    
+            var marker_94f7d049b857cdf0f592c577c3d3fec7 = L.marker(
+                [35.45528692911198, -6.035302572230472],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_24791118bf6b7b339cc868446189e47e = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_94f7d049b857cdf0f592c577c3d3fec7.setIcon(div_icon_24791118bf6b7b339cc868446189e47e);
+            
+    
+            var marker_fdf1eec27faf4f5365acec5231759b68 = L.marker(
+                [35.45501744485756, -6.035542809520913],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_e0539e0ff9b3379c14ecd835a1ce0802 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_fdf1eec27faf4f5365acec5231759b68.setIcon(div_icon_e0539e0ff9b3379c14ecd835a1ce0802);
+            
+    
+            var marker_441e811231e51dffa42c16dbe5138813 = L.marker(
+                [35.4547979780525, -6.035788393578116],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_3f0fdd20f2924f7d1be0834280ef5f3e = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e18\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_441e811231e51dffa42c16dbe5138813.setIcon(div_icon_3f0fdd20f2924f7d1be0834280ef5f3e);
+            
+    
+            var marker_9ab11a5249f4c993c6b828b898f60d5c = L.marker(
+                [35.45418897557429, -6.034798399583043],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_245903a38f6b244c56ba9d45268ca190 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e12\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_9ab11a5249f4c993c6b828b898f60d5c.setIcon(div_icon_245903a38f6b244c56ba9d45268ca190);
+            
+    
+            var marker_6ec7a37eb4da4d98d56fd7c4b34206de = L.marker(
+                [35.452961441057624, -6.034681465697757],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_157ed4c14fdaab19319c486d3e29f74a = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_6ec7a37eb4da4d98d56fd7c4b34206de.setIcon(div_icon_157ed4c14fdaab19319c486d3e29f74a);
+            
+    
+            var marker_1c89791fb30e6a0ddce489e13583ad5a = L.marker(
+                [35.45263351911487, -6.033560343691769],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_3407bd928223a14eb88dfd3fd7629989 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e0\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_1c89791fb30e6a0ddce489e13583ad5a.setIcon(div_icon_3407bd928223a14eb88dfd3fd7629989);
+            
+    
+            var marker_60ddb41234b7c46562da8da47e19f666 = L.marker(
+                [35.45315552112583, -6.03294509140461],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_848907f160efc86219b956e0844458bd = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e4\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_60ddb41234b7c46562da8da47e19f666.setIcon(div_icon_848907f160efc86219b956e0844458bd);
+            
+    
+            var marker_180be4fa2d9d5843f8c2509e03ff7695 = L.marker(
+                [35.453500715152884, -6.033276455051886],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_e1deef08baa7d540a3acb00cc821b532 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e1\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_180be4fa2d9d5843f8c2509e03ff7695.setIcon(div_icon_e1deef08baa7d540a3acb00cc821b532);
+            
+    
+            var marker_eb91c5c2b6c16fea09427f6e484b15b2 = L.marker(
+                [35.45350867928094, -6.032706047363788],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_06eeaa8b40e5a5c964bab9d6319b981a = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e5\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_eb91c5c2b6c16fea09427f6e484b15b2.setIcon(div_icon_06eeaa8b40e5a5c964bab9d6319b981a);
+            
+    
+            var marker_83a526a0db7c602fa015f1c5ccbd2bbe = L.marker(
+                [35.45387090360901, -6.032470825077014],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_4b63560b7b4bc8f71dd27045e6ba3d90 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_83a526a0db7c602fa015f1c5ccbd2bbe.setIcon(div_icon_4b63560b7b4bc8f71dd27045e6ba3d90);
+            
+    
+            var marker_a7748b05f4c2c7db5bfa4b43406a7ba6 = L.marker(
+                [35.454684251376555, -6.034107840052887],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_6ac46f143fce832c1e4800dbff9c724e = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a7748b05f4c2c7db5bfa4b43406a7ba6.setIcon(div_icon_6ac46f143fce832c1e4800dbff9c724e);
+            
+    
+            var marker_f74e098b3e8f3fafe6be94498b83d9bb = L.marker(
+                [35.45580796920401, -6.0337277854284475],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_335b5f676461e71cf7893578514a4c2a = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f74e098b3e8f3fafe6be94498b83d9bb.setIcon(div_icon_335b5f676461e71cf7893578514a4c2a);
+            
+    
+            var marker_8f133bff4d3333231294ffac924108d5 = L.marker(
+                [35.456658929981636, -6.03297553271358],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_743a93538afc219aac03d44776a802a8 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e28\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_8f133bff4d3333231294ffac924108d5.setIcon(div_icon_743a93538afc219aac03d44776a802a8);
+            
+    
+            var marker_f33df56c5906b6f90a5e762e3895507a = L.marker(
+                [35.45702265847325, -6.033247151134617],
+                {
+}
+            ).addTo(feature_group_06c81ffaf2f8ebbd4e778408f60c0916);
+        
+    
+            var div_icon_9e06308b07df051bec07207be74f7e07 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:blue; font-size:10pt;\"\u003e7\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f33df56c5906b6f90a5e762e3895507a.setIcon(div_icon_9e06308b07df051bec07207be74f7e07);
+            
+    
+            var feature_group_8f0e2525680adb0a609819a175753068 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_0ddd1cb36db1627043deddc4b80fbb1b = L.marker(
+                [35.45359, -6.03425],
+                {
+}
+            ).addTo(feature_group_8f0e2525680adb0a609819a175753068);
+        
+    
+            var icon_475da2dca27e5cc91d7f9092a75e93e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_490cd08be68e66d1edb6c7c6baa5850a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4e44577a36035d35a495f65aaee34e75 = $(`<div id="html_4e44577a36035d35a495f65aaee34e75" style="width: 100.0%; height: 100.0%;"><a href="https://www.google.com/maps?q=35.45359,-6.03425" target="_blank">Voir sur Google Maps</a></div>`)[0];
+                popup_490cd08be68e66d1edb6c7c6baa5850a.setContent(html_4e44577a36035d35a495f65aaee34e75);
+            
+        
+
+        marker_0ddd1cb36db1627043deddc4b80fbb1b.bindPopup(popup_490cd08be68e66d1edb6c7c6baa5850a)
+        ;
+
+        
+    
+    
+                marker_0ddd1cb36db1627043deddc4b80fbb1b.setIcon(icon_475da2dca27e5cc91d7f9092a75e93e2);
+            
+    
+            var geo_json_349539055bb5208319da1d8ad56e5cbasearchControl = new L.Control.Search({
+                layer: geo_json_349539055bb5208319da1d8ad56e5cba,
+                
+                propertyName: 'Province',
+                
+                collapsed: true,
+                textPlaceholder: 'Rechercher une province…',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_349539055bb5208319da1d8ad56e5cbasearchControl.on('search:locationfound', function(e) {
+                    geo_json_349539055bb5208319da1d8ad56e5cba.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_349539055bb5208319da1d8ad56e5cbasearchControl.on('search:collapsed', function(e) {
+                        geo_json_349539055bb5208319da1d8ad56e5cba.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_efe58283a4ce798dbf706877ffd61f05.addControl( geo_json_349539055bb5208319da1d8ad56e5cbasearchControl );
+
+        
+    
+            var geo_json_349539055bb5208319da1d8ad56e5cbasearchControl = new L.Control.Search({
+                layer: geo_json_349539055bb5208319da1d8ad56e5cba,
+                
+                propertyName: 'Commune',
+                
+                collapsed: true,
+                textPlaceholder: 'Rechercher une commune…',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_349539055bb5208319da1d8ad56e5cbasearchControl.on('search:locationfound', function(e) {
+                    geo_json_349539055bb5208319da1d8ad56e5cba.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_349539055bb5208319da1d8ad56e5cbasearchControl.on('search:collapsed', function(e) {
+                        geo_json_349539055bb5208319da1d8ad56e5cba.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_efe58283a4ce798dbf706877ffd61f05.addControl( geo_json_349539055bb5208319da1d8ad56e5cbasearchControl );
+
+        
+    
+            var geo_json_349539055bb5208319da1d8ad56e5cbasearchControl = new L.Control.Search({
+                layer: geo_json_349539055bb5208319da1d8ad56e5cba,
+                
+                propertyName: 'Code_district',
+                
+                collapsed: true,
+                textPlaceholder: 'Rechercher un district…',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_349539055bb5208319da1d8ad56e5cbasearchControl.on('search:locationfound', function(e) {
+                    geo_json_349539055bb5208319da1d8ad56e5cba.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_349539055bb5208319da1d8ad56e5cbasearchControl.on('search:collapsed', function(e) {
+                        geo_json_349539055bb5208319da1d8ad56e5cba.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_efe58283a4ce798dbf706877ffd61f05.addControl( geo_json_349539055bb5208319da1d8ad56e5cbasearchControl );
+
+        
+    
+            var layer_control_d8e495a2c1fdb6e6ea8a3414ecfd1b2c_layers = {
+                base_layers : {
+                    "Vue neutre" : tile_layer_13f765a237802944ff7645aee1ed6b52,
+                    "Vue OpenStreetMap" : tile_layer_54db47bc01874aa3e5e85bf4722adbad,
+                    "Vue satellite Esri" : tile_layer_0194a1c247f6abd58872597ca9c05d6d,
+                    "Vue Google plan" : tile_layer_4e4407e0704ab173bd762359e9afa383,
+                    "Vue Google satellite" : tile_layer_5f2d2b138c0cf4a9e1ee15eb3cd5aaf3,
+                },
+                overlays :  {
+                    "Districts" : feature_group_d45997f9381b35adb47f813b4bb9b2c6,
+                    "\u00celots" : geo_json_064f0bff59f077956d9fd6138ccd687b,
+                    "Num\u00e9ro d\u0027\u00celot" : feature_group_ea27d7d7a14331414881eec42fb25edc,
+                    "Nombre de M\u00e9nages" : feature_group_06c81ffaf2f8ebbd4e778408f60c0916,
+                    "Points centraux des districts" : feature_group_8f0e2525680adb0a609819a175753068,
+                },
+            };
+            let layer_control_d8e495a2c1fdb6e6ea8a3414ecfd1b2c = L.control.layers(
+                layer_control_d8e495a2c1fdb6e6ea8a3414ecfd1b2c_layers.base_layers,
+                layer_control_d8e495a2c1fdb6e6ea8a3414ecfd1b2c_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_efe58283a4ce798dbf706877ffd61f05);
+
+  var geo_json_604f76e9a0c4a636bf871db17037c527searchControl = new L.Control.Search({
+                layer: geo_json_604f76e9a0c4a636bf871db17037c527,
+                
+                propertyName: 'Province',
+                
+                collapsed: true,
+                textPlaceholder: 'Rechercher une province…',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:locationfound', function(e) {
+                    geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:collapsed', function(e) {
+                        geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
+
+        
+    
+            var geo_json_604f76e9a0c4a636bf871db17037c527searchControl = new L.Control.Search({
+                layer: geo_json_604f76e9a0c4a636bf871db17037c527,
+                
+                propertyName: 'Commune',
+                
+                collapsed: true,
+                textPlaceholder: 'Rechercher une commune…',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:locationfound', function(e) {
+                    geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:collapsed', function(e) {
+                        geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
+
+        
+    
+            var geo_json_604f76e9a0c4a636bf871db17037c527searchControl = new L.Control.Search({
+                layer: geo_json_604f76e9a0c4a636bf871db17037c527,
+                
+                propertyName: 'Code_district',
+                
+                collapsed: true,
+                textPlaceholder: 'Rechercher par Code district…',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:locationfound', function(e) {
+                    geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_604f76e9a0c4a636bf871db17037c527searchControl.on('search:collapsed', function(e) {
+                        geo_json_604f76e9a0c4a636bf871db17037c527.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
+
+   // ===== GEOLOCALISATION EN TEMPS REEL =====
+
+let _followUser = false;
+let _marker = null;
+let _accuracyCircle = null;
+
+function startLiveTracking() {
+  if (!navigator.geolocation) {
+    alert('Geolocation is not supported by your browser');
+    return;
+  }
+
+  let firstLocate = true;
+
+  function onSuccess(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const acc = position.coords.accuracy || 0;
+
+    if (!_marker) {
+      _marker = L.marker([lat, lon]).addTo(window._liveMap);
+      _accuracyCircle = L.circle([lat, lon], {radius: acc, color:'#136AEC', fillColor:'#136AEC', fillOpacity:0.15}).addTo(window._liveMap);
+    } else {
+      _marker.setLatLng([lat, lon]);
+      _accuracyCircle.setLatLng([lat, lon]).setRadius(acc);
+    }
+
+    if (firstLocate) {
+      window._liveMap.flyTo([lat, lon], 16, {animate: true, duration: 0.8});
+      firstLocate = false;
+    } else if (_followUser) {
+      window._liveMap.panTo([lat, lon], {animate: true});
+    }
+  }
+
+  function onError(err) {
+    console.warn('Geolocation error:', err);
+  }
+
+  navigator.geolocation.watchPosition(onSuccess, onError, {
+    enableHighAccuracy: true,
+    maximumAge: 1000,
+    timeout: 10000
+  });
+}
+
+// ---------------- FOLLOW BUTTON ----------------
+function addFollowButton(map) {
+  const control = L.control({position: 'topleft'});
+  control.onAdd = function() {
+    const c = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+    c.style.background = 'white';
+    c.style.cursor = 'pointer';
+    c.innerHTML = '<a href="#" id="followBtn" style="display:block;padding:6px 8px;text-decoration:none;">🚶 Unfollow</a>';
+    c.onclick = function() {
+      _followUser = !_followUser;
+      const btn = document.getElementById('followBtn');
+      btn.textContent = _followUser ? "📍 Follow" : "🚶 Unfollow";
+      btn.style.background = _followUser ? "#c8f7c5" : "#f0f0f0";
+    };
+    return c;
+  };
+  control.addTo(map);
+}
+
+// ---------------- INIT ----------------
+window.addEventListener('load', function() {
+  let m = null;
+  for (const key in window) {
+    if (window[key] && window[key] instanceof L.Map) {
+      m = window[key];
+      break;
+    }
+  }
+  if (m) {
+    window._liveMap = m;
+    addFollowButton(m);
+    startLiveTracking();
+    console.log("✅ Live tracking ready");
+  } else {
+    console.warn("⚠️ No Leaflet map found.");
+  }
+});
+ // ---------------- UI TOGGLE BUTTON ----------------
+function addUIToggleButton(map) {
+  const control = L.control({position: 'topleft'});
+  control.onAdd = function() {
+    const c = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+    c.id = 'uiToggleBtn';
+    c.style.background = 'white';
+    c.style.cursor = 'pointer';
+    c.style.marginTop = '90px'; // place below other controls if any
+    c.style.transition = 'margin-top 0.3s ease';
+    c.innerHTML = '<a href="#" style="display:block;padding:6px 8px;text-decoration:none;">🧩 Hide All</a>';
+
+    let hidden = false;
+    c.onclick = function() {
+      const controls = document.querySelectorAll('.leaflet-control');
+      const link = c.querySelector('a');
+
+      if (!hidden) {
+        controls.forEach(ctrl => {
+          if (ctrl.id !== 'uiToggleBtn') ctrl.style.display = 'none';
+        });
+        c.style.marginTop = '0px';
+        link.textContent = '🧩 Show All';
+      } else {
+        controls.forEach(ctrl => {
+          if (ctrl.id !== 'uiToggleBtn') ctrl.style.display = 'block';
+        });
+        c.style.marginTop = '90px';
+        link.textContent = '🧩 Hide All';
+      }
+      hidden = !hidden;
+    };
+    return c;
+  };
+  control.addTo(map);
+}
+
+// Appel de la fonction sur ta carte
+addUIToggleButton(map_b3cb9ad9e081810cd4872bd9152db256);
+                                                                            
+        
+</script>
+</html>
