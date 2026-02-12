@@ -1375,23 +1375,22 @@
             map_b3cb9ad9e081810cd4872bd9152db256.addControl( geo_json_604f76e9a0c4a636bf871db17037c527searchControl );
 
    // ===== GEOLOCALISATION EN TEMPS REEL =====
-// ===== GEOLOCALISATION EN TEMPS REEL =====
 // Vérifier que le navigateur supporte la géolocalisation
 if (navigator.geolocation) {
-    // Créer un marqueur pour la position en direct
-    var userMarker = L.marker([0, 0], {
-        icon: L.icon({
-            iconUrl: 'https://cdn-icons-png.flaticon.com/512/64/64113.png', // icône GPS
-            iconSize: [30, 30],
-            iconAnchor: [15, 15],
-        })
-    }).addTo(map);
+    // Créer un divIcon pour la position en direct
+    var liveDivIcon = L.divIcon({
+        html: '<div style="font-weight:bold; color:green; font-size:12pt;">📍</div>',
+        className: "empty"
+    });
+
+    // Créer le marker initial à [0,0] (sera mis à jour)
+    var liveMarker = L.marker([0, 0], { icon: liveDivIcon }).addTo(map);
 
     // Fonction pour mettre à jour la position
     function updatePosition(position) {
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
-        userMarker.setLatLng([lat, lng]);
+        liveMarker.setLatLng([lat, lng]);
         map.setView([lat, lng], 16); // centre la carte sur la position
     }
 
@@ -1401,12 +1400,7 @@ if (navigator.geolocation) {
     }, {
         enableHighAccuracy: true,
         maximumAge: 0,
-        timeout: 5000
-    });
-} else {
-    alert("La géolocalisation n'est pas supportée par ce navigateur.");
-}
-                                                                    
+                                                                  
         
 </script>
 </html>
